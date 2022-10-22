@@ -1,20 +1,24 @@
-import Tab from './Tab';
+import { Tabs, Tab } from '@mui/material';
+import { useState } from 'react';
+import colours from '../assets/colours';
 const TabBar = () => {
-	return (
-		<div
-			style={{
-				position: 'absolute',
-				display: 'flex',
-				flexDirection: 'row',
-				// justifyContent: 'space-around',
-				width: '100%',
-				height: '5vh',
-			}}
-		>
-			<Tab />
-			<Tab />
-			<Tab />
-		</div>
-	);
+  const [value, setValue] = useState('one');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Tabs
+      value={value}
+      onChange={handleChange}
+      textColor={colours.p2}
+      //   TabIndicatorProps={{ style: "color:'black" }}
+      aria-label='secondary tabs example'
+    >
+      <Tab value='one' label='Detail View' />
+      <Tab value='two' label='Graph View' />
+    </Tabs>
+  );
 };
 export default TabBar;
