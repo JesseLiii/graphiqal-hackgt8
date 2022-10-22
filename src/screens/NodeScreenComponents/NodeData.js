@@ -1,6 +1,6 @@
 import colours from '../../assets/colours';
 import React, { useEffect, useState, useId } from 'react';
-import EditablePage from '../../components/Editing/EditablePage';
+import EditablePage from '../../blocks/editablePage';
 
 // const id = useId();
 

@@ -1,47 +1,61 @@
 import { useState, useEffect, useId } from 'react';
+// import { useRouter } from 'next/router';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
-import EditableBlock from './editableBlock';
+import EditableBlock from '../editableBlock';
 import Notice from '../notice';
-import { usePrevious } from '../../helpers/usePrevious';
+import { usePrevious } from '../../hooks';
 import { objectId, setCaretToEnd } from '../../utils';
 
+// A page is represented by an array containing several blocks
+// [
+//   {
+//     _id: "5f54d75b114c6d176d7e9765",
+//     html: "Heading",
+//     tag: "h1",
+//     imageUrl: "",
+//   },
+//   {
+//     _id: "5f54d75b114c6d176d7e9766",
+//     html: "I am a <strong>paragraph</strong>",
+//     tag: "p",
+//     imageUrl: "",
+//   },
+//     _id: "5f54d75b114c6d176d7e9767",
+//     html: "/im",
+//     tag: "img",
+//     imageUrl: "images/test.png",
+//   }
+// ]
+
+const uid = () => {
+	return Date.now().toString(36) + Math.random().toString(36).substr(2);
+};
+
 const EditablePage = ({ id, fetchedBlocks, err }) => {
-	if (err) {
-		return (
-			<Notice status='ERROR'>
-				<h3>Something went wrong 💔</h3>
-				<p>Have you tried to restart the app at '/' ?</p>
-			</Notice>
-		);
-	}
+	id = uid();
+	// if (err) {
+	// 	return (
+	// 		<Notice status='ERROR'>
+	// 			<h3>Something went wrong 💔</h3>
+	// 			<p>Have you tried to restart the app at '/' ?</p>
+	// 		</Notice>
+	// 	);
+	// }
+	fetchedBlocks = [
+		{
+			_id: '5f54d75b114c6d176d7e9765',
+			html: 'Heading',
+			tag: 'h1',
+			imageUrl: '',
+		},
+	];
 
 	// const router = useRouter();
 	const [blocks, setBlocks] = useState(fetchedBlocks);
 	const [currentBlockId, setCurrentBlockId] = useState(null);
 
 	const prevBlocks = usePrevious(blocks);
-
-	// Update the database whenever blocks change
-	useEffect(() => {
-		const updatePageOnServer = async (blocks) => {
-			try {
-				await fetch(`${process.env.NEXT_PUBLIC_API}/pages/${id}`, {
-					method: 'PUT',
-					credentials: 'include',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						blocks: blocks,
-					}),
-				});
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		if (prevBlocks && prevBlocks !== blocks) {
-			updatePageOnServer(blocks);
-		}
-	}, [blocks, prevBlocks]);
 
 	// Handling the cursor and focus on adding and deleting blocks
 	useEffect(() => {
@@ -70,26 +84,6 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
 		}
 	}, [blocks, prevBlocks, currentBlockId]);
 
-	const deleteImageOnServer = async (imageUrl) => {
-		// The imageUrl contains images/name.jpg, hence we do not need
-		// to explicitly add the /images endpoint in the API url
-		try {
-			const response = await fetch(
-				`${process.env.NEXT_PUBLIC_API}/pages/${imageUrl}`,
-				{
-					method: 'DELETE',
-					headers: {
-						Accept: 'application/json',
-						'Content-Type': 'application/json',
-					},
-				}
-			);
-			await response.json();
-		} catch (err) {
-			console.log(err);
-		}
-	};
-
 	const updateBlockHandler = (currentBlock) => {
 		const index = blocks.map((b) => b._id).indexOf(currentBlock.id);
 		const oldBlock = blocks[index];
@@ -101,11 +95,6 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
 			imageUrl: currentBlock.imageUrl,
 		};
 		setBlocks(updatedBlocks);
-		// If the image has been changed, we have to delete the
-		// old image file on the server
-		if (oldBlock.imageUrl && oldBlock.imageUrl !== currentBlock.imageUrl) {
-			deleteImageOnServer(oldBlock.imageUrl);
-		}
 	};
 
 	const addBlockHandler = (currentBlock) => {
@@ -133,9 +122,6 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
 			setBlocks(updatedBlocks);
 			// If the deleted block was an image block, we have to delete
 			// the image file on the server
-			if (deletedBlock.tag === 'img' && deletedBlock.imageUrl) {
-				deleteImageOnServer(deletedBlock.imageUrl);
-			}
 		}
 	};
 
@@ -153,8 +139,7 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
 		updatedBlocks.splice(destination.index - 1, 0, removedBlocks[0]);
 		setBlocks(updatedBlocks);
 	};
-
-	// const isNewPublicPage = router.query.public === "true";
+	// const isNewPublicPage = router.query.public === 'true';
 	return (
 		<>
 			<DragDropContext onDragEnd={onDragEndHandler}>
