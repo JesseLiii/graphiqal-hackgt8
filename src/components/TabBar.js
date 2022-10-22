@@ -13,7 +13,6 @@ const TabBar = () => {
       value={value}
       onChange={handleChange}
       textColor={colours.p2}
-      //   TabIndicatorProps={{ style: "color:'black" }}
       aria-label='secondary tabs example'
     >
       <Tab value='one' label='Detail View' />
