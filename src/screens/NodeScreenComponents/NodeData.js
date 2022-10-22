@@ -17,7 +17,7 @@ const NodeData = () => {
 			}}
 		>
 			<h1>NodeData</h1>
-			<input
+			<div
 				className='input'
 				type='text'
 				value={content}
