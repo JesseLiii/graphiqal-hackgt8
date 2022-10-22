@@ -83,6 +83,12 @@ body {
   
 }
 
+.screen {
+  padding: 5vh; 
+  display: flex;
+  height: 100vh;
+}
+
 .card {
   border: 1px solid var(--lining);
   border-radius: 5px;

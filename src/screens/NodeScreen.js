@@ -12,7 +12,7 @@ const NodeScreen = ({ data }) => {
   );
 =======
 	return (
-		<div style={{ padding: '5vh', display: 'flex', height: '100vh' }}>
+		<div className='screen'>
 			<NodeData></NodeData>
 			<NodeConnections></NodeConnections>
 			<ConnectionModal />
