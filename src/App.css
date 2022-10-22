@@ -1,3 +1,17 @@
+:root {
+  --p1: #fff;
+	--p2: #17181C;
+	--accent1: #9BA5C9;
+	--accent2: #FF9299;
+	--lining: #24242424;
+}
+
+html { box-sizing: border-box; }
+  
+*, 
+*::before, 
+*::after { box-sizing: inherit; }
+
 body {
   font-family: Roboto, sans-serif;
   margin: 0px;
@@ -67,4 +81,15 @@ body {
 *, *:focus {
   outline: 0;
   
+}
+
+.card {
+  border: 1px solid var(--lining);
+  border-radius: 5px;
+  background-color: var(--p1);
+
+}
+
+.borderRight {
+  border-right: 1px solid var(--lining);
 }
