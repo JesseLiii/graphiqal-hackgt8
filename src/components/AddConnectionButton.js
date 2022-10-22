@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNodes } from '@fortawesome/free-solid-svg-icons';
 import colours from '../assets/colours';
 
-const AddConnectionButton = () => {
+const AddConnectionButton = ({ addConnection }) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -19,7 +19,7 @@ const AddConnectionButton = () => {
   });
 
   return (
-    <div>
+    <div onClick={() => addConnection()}>
       <ThemeProvider theme={theme}>
         <Fab color='primary' aria-label='add'>
           <FontAwesomeIcon

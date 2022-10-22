@@ -1,10 +1,12 @@
+import Node from '../screens/GraphScreenComponents.js/Node';
 import { Fab } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import { useRef } from 'react';
 import colours from '../assets/colours';
 
-const AddNodeButton = () => {
+const AddNodeButton = ({ addNode }) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -18,8 +20,13 @@ const AddNodeButton = () => {
     },
   });
 
+  const newRef = useRef(null);
   return (
-    <div>
+    <div
+      onClick={() =>
+        addNode({ id: 'newNode', x: 350, y: 80, reference: newRef })
+      }
+    >
       <ThemeProvider theme={theme}>
         <Fab color='secondary' aria-label='add'>
           <FontAwesomeIcon icon={faCircle} color={colours.p1} />
