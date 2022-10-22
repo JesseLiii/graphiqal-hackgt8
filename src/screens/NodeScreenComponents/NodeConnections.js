@@ -11,7 +11,6 @@ const NodeConnections = () => {
 					nodeTitle: 'nodeA',
 				}}
 			/>
-			<EditablePage></EditablePage>
 		</div>
 	);
 };
