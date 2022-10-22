@@ -181,7 +181,6 @@ class EditableBlock extends React.Component {
 
 	handleDragHandleClick(e) {
 		const dragHandle = e.target;
-		console.log(dragHandle);
 		this.openActionMenu(dragHandle, 'DRAG_HANDLE_CLICK');
 	}
 
@@ -354,35 +353,33 @@ class EditableBlock extends React.Component {
 							className={styles.draggable}
 							{...provided.draggableProps}
 						>
-							{this.state.tag !== 'img' && (
-								<ContentEditable
-									innerRef={this.contentEditable}
-									data-position={this.props.position}
-									data-tag={this.state.tag}
-									html={this.state.html}
-									onChange={this.handleChange}
-									onFocus={this.handleFocus}
-									onBlur={this.handleBlur}
-									onKeyDown={this.handleKeyDown}
-									onKeyUp={this.handleKeyUp}
-									onMouseUp={this.handleMouseUp}
-									tagName={this.state.tag}
-									className={[
-										styles.block,
-										this.state.isTyping ||
-										this.state.actionMenuOpen ||
-										this.state.tagSelectorMenuOpen
-											? styles.blockSelected
-											: null,
-										this.state.placeholder
-											? styles.placeholder
-											: null,
-										snapshot.isDragging
-											? styles.isDragging
-											: null,
-									].join(' ')}
-								/>
-							)}
+							<ContentEditable
+								innerRef={this.contentEditable}
+								data-position={this.props.position}
+								data-tag={this.state.tag}
+								html={this.state.html}
+								onChange={this.handleChange}
+								onFocus={this.handleFocus}
+								onBlur={this.handleBlur}
+								onKeyDown={this.handleKeyDown}
+								onKeyUp={this.handleKeyUp}
+								onMouseUp={this.handleMouseUp}
+								tagName={this.state.tag}
+								className={[
+									styles.block,
+									this.state.isTyping ||
+									this.state.actionMenuOpen ||
+									this.state.tagSelectorMenuOpen
+										? styles.blockSelected
+										: null,
+									this.state.placeholder
+										? styles.placeholder
+										: null,
+									snapshot.isDragging
+										? styles.isDragging
+										: null,
+								].join(' ')}
+							/>
 							<span
 								role='button'
 								tabIndex='0'

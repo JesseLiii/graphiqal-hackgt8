@@ -1,3 +1,4 @@
+import EditablePage from '../../blocks/editablePage';
 import ConnectionCard from './ConnectionCard';
 
 const NodeConnections = () => {
@@ -10,6 +11,7 @@ const NodeConnections = () => {
 					nodeTitle: 'nodeA',
 				}}
 			/>
+			<EditablePage></EditablePage>
 		</div>
 	);
 };

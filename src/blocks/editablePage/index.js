@@ -34,14 +34,8 @@ const uid = () => {
 
 const EditablePage = ({ id, fetchedBlocks, err }) => {
 	id = uid();
-	// if (err) {
-	// 	return (
-	// 		<Notice status='ERROR'>
-	// 			<h3>Something went wrong 💔</h3>
-	// 			<p>Have you tried to restart the app at '/' ?</p>
-	// 		</Notice>
-	// 	);
-	// }
+	console.log('id: ', id);
+
 	fetchedBlocks = [
 		{
 			_id: '5f54d75b114c6d176d7e9765',
@@ -98,6 +92,8 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
 	};
 
 	const addBlockHandler = (currentBlock) => {
+		console.log(currentBlock);
+		console.log(blocks);
 		setCurrentBlockId(currentBlock.id);
 		const index = blocks.map((b) => b._id).indexOf(currentBlock.id);
 		const updatedBlocks = [...blocks];
