@@ -26,7 +26,7 @@ const TabBar = ({ activeState, changeState }) => {
 			<Tabs
 				value={value}
 				onChange={handleChange}
-				// textColor={colours.p2}
+				textColor={colours.p2}
 				aria-label='secondary tabs example'
 				indicatorColor='secondary'
 			>
