@@ -31,13 +31,13 @@ const ConnectionModal = ({ connection }) => {
 			>
 				<div className='card' style={{ ...style, display: 'flex' }}>
 					<div
-						className='borderRight'
+						className='borderRight modal'
 						style={{ flex: 1, padding: '5%' }}
 					>
 						<div>Connection Title</div>
 						<div className='input'></div>
 					</div>
-					<div style={{ flex: 1, padding: '5%' }}>
+					<div className='modal' style={{ flex: 1, padding: '5%' }}>
 						<div>Node Title </div>
 						<div className='input'></div>
 						{/* <div

@@ -1,8 +1,17 @@
 import colours from '../../assets/colours';
-import React, { useState } from 'react';
+import React, { useEffect, useState, useId } from 'react';
+import EditablePage from '../../components/Editing/EditablePage';
+
+// const id = useId();
 
 const NodeData = () => {
-	const [content, setcontent] = useState('');
+	const [content, setcontent] = useState([
+		{ id: useId(), html: '', tag: 'p' },
+	]);
+
+	useEffect(() => {
+		console.log(content);
+	}, [content]);
 
 	return (
 		<div
@@ -17,12 +26,7 @@ const NodeData = () => {
 			}}
 		>
 			<h1>NodeData</h1>
-			<div
-				className='input'
-				type='text'
-				value={content}
-				onChange={(e) => setcontent(e.target.value)}
-			/>
+			<EditablePage></EditablePage>
 		</div>
 	);
 };

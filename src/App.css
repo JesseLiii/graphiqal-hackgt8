@@ -19,7 +19,7 @@ body {
 }
 
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -65,7 +65,7 @@ body {
   border: 0;
   width: 100%;
   height: 100%;
-  -webkit-user-modify: read-write;
+  /* -webkit-user-modify: read-write; */
   -webkit-tap-highlight-color: transparent;
   max-width: 100%;
   width: 100%;
@@ -98,4 +98,9 @@ body {
 
 .borderRight {
   border-right: 1px solid var(--lining);
+}
+
+.modal {
+  max-height: 90vh;
+  overflow-y: scroll;
 }

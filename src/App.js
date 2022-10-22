@@ -3,7 +3,6 @@ import './App.css';
 import View from './pages/view';
 
 function App() {
-	console.log('ay');
 	return (
 		<div className='App'>
 			<View></View>
