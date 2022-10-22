@@ -3,14 +3,6 @@ import NodeConnections from './NodeScreenComponents/NodeConnections';
 import NodeData from './NodeScreenComponents/NodeData';
 
 const NodeScreen = ({ data }) => {
-<<<<<<< HEAD
-  return (
-    <div style={{ padding: '5vh', display: 'flex', height: '100vh' }}>
-      <NodeData></NodeData>
-      <NodeConnections></NodeConnections>
-    </div>
-  );
-=======
 	return (
 		<div className='screen'>
 			<NodeData></NodeData>
@@ -18,7 +10,6 @@ const NodeScreen = ({ data }) => {
 			<ConnectionModal />
 		</div>
 	);
->>>>>>> refs/remotes/origin/testing
 };
 
 export default NodeScreen;
