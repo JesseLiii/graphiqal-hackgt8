@@ -6,6 +6,12 @@
 	--lining: #24242424;
 }
 
+html { box-sizing: border-box; }
+  
+*, 
+*::before, 
+*::after { box-sizing: inherit; }
+
 body {
   font-family: Roboto, sans-serif;
   margin: 0px;
@@ -80,4 +86,10 @@ body {
 .card {
   border: 1px solid var(--lining);
   border-radius: 5px;
+  background-color: var(--p1);
+
+}
+
+.borderRight {
+  border-right: 1px solid var(--lining);
 }
