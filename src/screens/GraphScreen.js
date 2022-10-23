@@ -4,6 +4,7 @@ import CheckBox from '@mui/material';
 import Xarrow, { useXarrow, Xwrapper } from 'react-xarrows';
 import Draggable from 'react-draggable';
 import colours from '../assets/colours';
+
 const GraphScreen = ({
   parentNode,
   nodes,
@@ -30,6 +31,7 @@ const GraphScreen = ({
   // const renderNode = () => {
   //   return
   // }
+
   const moveNode = (node, position) => {
     let modified = views[parentNode][1].content;
     if (!(node.id in modified)) {

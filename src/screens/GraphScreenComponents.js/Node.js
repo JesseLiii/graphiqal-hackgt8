@@ -26,7 +26,6 @@ const Node = ({ parentNode, node, pos, moveNode, editNodeTitle }) => {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    zIndex: 0,
   };
 
   const onStart = () => {};

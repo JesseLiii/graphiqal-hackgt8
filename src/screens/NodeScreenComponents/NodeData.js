@@ -5,30 +5,26 @@ import EditablePage from '../../blocks/editablePage';
 // const id = useId();
 
 const NodeData = () => {
-	const [content, setcontent] = useState([
-		{ id: useId(), html: '', tag: 'p' },
-	]);
+  const [content, setcontent] = useState([{ id: useId(), html: '', tag: 'p' }]);
 
-	useEffect(() => {
-		console.log(content);
-	}, [content]);
+  useEffect(() => {}, [content]);
 
-	return (
-		<div
-			style={{
-				flex: 3,
-				borderBottom: '0px',
-				borderLeft: '0px',
-				borderTop: '0px',
-				borderRight: '1px',
-				borderStyle: 'solid',
-				borderColor: colours.lining,
-			}}
-		>
-			<h1>NodeData</h1>
-			<EditablePage></EditablePage>
-		</div>
-	);
+  return (
+    <div
+      style={{
+        flex: 3,
+        borderBottom: '0px',
+        borderLeft: '0px',
+        borderTop: '0px',
+        borderRight: '1px',
+        borderStyle: 'solid',
+        borderColor: colours.lining,
+      }}
+    >
+      <h1>NodeData</h1>
+      <EditablePage></EditablePage>
+    </div>
+  );
 };
 
 export default NodeData;

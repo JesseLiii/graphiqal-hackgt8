@@ -91,7 +91,6 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
   };
 
   const addBlockHandler = (currentBlock) => {
-    console.log(currentBlock);
     setCurrentBlockId(currentBlock.id);
     const index = blocks.map((b) => b._id).indexOf(currentBlock.id);
     const updatedBlocks = [...blocks];

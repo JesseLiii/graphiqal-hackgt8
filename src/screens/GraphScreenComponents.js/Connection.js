@@ -8,7 +8,6 @@ const Connection = ({ editConnection, line, key }) => {
     editConnection(event.target.value);
   };
   const arrowObj = (connection) => {
-    const text = connection.title;
     return {
       start: connection.nodes[0],
       end: connection.nodes[1],
@@ -24,7 +23,10 @@ const Connection = ({ editConnection, line, key }) => {
           <TextField
             inputProps={{
               style: {
-                padding: 5,
+                paddingTop: 5,
+                paddingBottom: 5,
+                paddingLeft: 0,
+                paddingRight: 0,
                 textAlign: 'center',
               },
             }}
@@ -40,6 +42,7 @@ const Connection = ({ editConnection, line, key }) => {
               },
               bgcolor: colours.p1,
               padding: 0,
+              width: 'auto',
             }}
           />
         ),

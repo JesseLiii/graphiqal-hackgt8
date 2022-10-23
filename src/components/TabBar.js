@@ -3,7 +3,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from 'react';
 import colours from '../assets/colours';
 const TabBar = ({ activeState, changeState, views }) => {
-  console.log('views' + JSON.stringify(views));
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -32,8 +31,6 @@ const TabBar = ({ activeState, changeState, views }) => {
         indicatorColor='secondary'
       >
         {Object.values(views).map((view, i) => {
-          console.log('curr view' + JSON.stringify(view) + ' ' + i);
-          console.log(view.title);
           return <Tab value={i} key={i} label={view.title} />;
         })}
       </Tabs>
