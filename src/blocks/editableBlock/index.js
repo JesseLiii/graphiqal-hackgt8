@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import ContentEditable from 'react-contenteditable';
 import { Draggable } from 'react-beautiful-dnd';
 
@@ -6,7 +6,12 @@ import styles from './styles.module.scss';
 import TagSelectorMenu from '../tagSelectorMenu';
 import ActionMenu from '../actionMenu';
 import DragHandleIcon from '../../images/draggable.svg';
-import { setCaretToEnd, getCaretCoordinates, getSelection } from '../../utils';
+import {
+	setCaretToEnd,
+	getCaretCoordinates,
+	getSelection,
+	objectId,
+} from '../../utils';
 
 const CMD_KEY = '/';
 
@@ -90,12 +95,22 @@ class EditableBlock extends React.Component {
 			((stoppedTyping && htmlChanged) || tagChanged || imageChanged) &&
 			hasNoPlaceholder
 		) {
-			this.props.updateBlock({
-				id: this.props.id,
-				html: this.state.html,
-				tag: this.state.tag,
-				imageUrl: this.state.imageUrl,
-			});
+			if (this.state.node_id) {
+				this.props.updateBlock({
+					id: this.props.id,
+					html: this.state.html,
+					tag: this.state.tag,
+					imageUrl: this.state.imageUrl,
+					node_id: this.state.node_id,
+				});
+			} else {
+				this.props.updateBlock({
+					id: this.props.id,
+					html: this.state.html,
+					tag: this.state.tag,
+					imageUrl: this.state.imageUrl,
+				});
+			}
 		}
 	}
 
@@ -231,30 +246,20 @@ class EditableBlock extends React.Component {
 	// i.e. img = display <div><input /><img /></div> (input picker is hidden)
 	// i.e. every other tag = <ContentEditable /> with its tag and html content
 	handleTagSelection(tag) {
-		if (tag === 'img') {
-			this.setState({ ...this.state, tag: tag }, () => {
+		if (this.state.isTyping) {
+			// Update the tag and restore the html backup without the command
+			this.setState({ tag: tag, html: this.state.htmlBackup }, () => {
+				setCaretToEnd(this.contentEditable.current);
 				this.closeTagSelectorMenu();
-				if (this.fileInput) {
-					// Open the native file picker
-					this.fileInput.click();
-				}
-				// Add new block so that the user can continue writing
-				// after adding an image
-				this.props.addBlock({
-					id: this.props.id,
-					html: '',
-					tag: 'p',
-					imageUrl: '',
-					ref: this.contentEditable.current,
-				});
 			});
 		} else {
-			if (this.state.isTyping) {
-				// Update the tag and restore the html backup without the command
-				this.setState({ tag: tag, html: this.state.htmlBackup }, () => {
-					setCaretToEnd(this.contentEditable.current);
-					this.closeTagSelectorMenu();
-				});
+			if (tag === 'h3') {
+				this.setState(
+					{ ...this.state, tag: tag, node_id: objectId() },
+					() => {
+						this.closeTagSelectorMenu();
+					}
+				);
 			} else {
 				this.setState({ ...this.state, tag: tag }, () => {
 					this.closeTagSelectorMenu();

@@ -5,31 +5,36 @@ import styles from './styles.module.scss';
 
 const MENU_HEIGHT = 150;
 const allowedTags = [
-	{
-		id: 'page-title',
-		tag: 'h1',
-		label: 'Page Title',
-	},
+	// {
+	// 	id: 'page-title',
+	// 	tag: 'h1',
+	// 	label: 'Page Title',
+	// },
 	{
 		id: 'heading',
 		tag: 'h2',
 		label: 'Heading',
 	},
 	{
-		id: 'subheading',
+		id: 'newnode',
 		tag: 'h3',
-		label: 'Subheading',
+		label: 'New Node',
+	},
+	{
+		id: 'connection',
+		tag: 'h3',
+		label: 'connection',
 	},
 	{
 		id: 'paragraph',
 		tag: 'p',
 		label: 'Paragraph',
 	},
-	{
-		id: 'image',
-		tag: 'img',
-		label: 'Image',
-	},
+	// {
+	// 	id: 'image',
+	// 	tag: 'img',
+	// 	label: 'Image',
+	// },
 ];
 
 const TagSelectorMenu = ({ position, closeMenu, handleSelection }) => {

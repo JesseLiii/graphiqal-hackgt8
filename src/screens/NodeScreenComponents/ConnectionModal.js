@@ -14,7 +14,6 @@ const style = {
 };
 
 const ConnectionModal = ({ connection }) => {
-	console.log(connection);
 	// const { content, nodeTitle } = connection;
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);

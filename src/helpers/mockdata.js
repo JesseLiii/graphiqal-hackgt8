@@ -1,7 +1,55 @@
 export const mockdata = {
 	id1: {
 		title: 'Parent Node - PMA',
-		content: [],
+		content: [
+			{
+				_id: 'l9kqq7kytgj7gqpsf2',
+				html: 'PMA',
+				tag: 'h1',
+				imageUrl: '',
+			},
+			{
+				_id: '6354a92260f8431027f5c05d',
+				tag: 'h3',
+				html: 'Pain Point 1',
+				imageUrl: '',
+			},
+			{
+				_id: '6354a93fb9664d50cbb7457c',
+				tag: 'p',
+				html: 'Paragraph about pain point 1',
+				imageUrl: '',
+			},
+			{
+				_id: '6354a9447dc8fbeeab8c7422',
+				tag: 'h3',
+				html: 'Pain Point 2',
+				imageUrl: '',
+			},
+			{
+				_id: '6354a955cf6add6b4e4e54f0',
+				tag: 'p',
+				html: '',
+				imageUrl: '',
+			},
+			{
+				_id: '6354a94c4bf97cf84f6d11b4',
+				tag: 'p',
+				html: 'example data structure',
+				imageUrl: '',
+			},
+			{
+				_id: '6354a923c5994750dcea49aa',
+				tag: 'h3',
+				node_id: 'id2',
+			},
+			{
+				_id: '6354a923c5994750dcea491e',
+				tag: 'p',
+				html: 'heehee',
+				imageUrl: '',
+			},
+		],
 		connections: {
 			id2: 'connection1-2',
 			id3: 'connection1-3',
@@ -9,7 +57,14 @@ export const mockdata = {
 	},
 	id2: {
 		title: 'Pain Point 1',
-		content: [],
+		content: [
+			{
+				_id: '6354a923c5994750dcea491asd',
+				tag: 'p',
+				html: 'I fucking hate feeling like a dumbass after coming back to my code',
+				imageUrl: '',
+			},
+		],
 		connections: {
 			id4: 'connection2-4',
 			id5: 'connection2-5',

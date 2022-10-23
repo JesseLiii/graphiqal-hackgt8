@@ -2,18 +2,13 @@ import NodeScreen from '../screens/NodeScreen';
 import TabBar from '../components/TabBar';
 import AddConnectionButton from '../components/AddConnectionButton';
 import AddNodeButton from '../components/AddNodeButton';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import GraphScreen from '../screens/GraphScreen';
 import colours from '../assets/colours';
 
 import { mockdata, mockconnections, mockviewnodes } from '../helpers/mockdata';
 
 const View = ({ data }) => {
-	console.log('mock');
-	console.log(mockconnections);
-	console.log(mockdata);
-	console.log(mockviewnodes);
-
 	const arrowObj = (start, end) => {
 		return {
 			start: start,
@@ -39,30 +34,15 @@ const View = ({ data }) => {
 	const [activeState, setActiveState] = useState(1);
 	const [selectMode, setSelectMode] = useState(true);
 	const [selectedNodes, setSelectedNodes] = useState([]);
-	const parentNode = 'parentNode';
-	const [nodes, setNodes] = useState([
-		{
-			id: 'parentNode',
-			x: 50,
-			y: 20,
-			reference: useRef(null),
-		},
-		{ id: 'box1', x: 50, y: 20, reference: useRef(null) },
-		{ id: 'box2', x: 20, y: 250, reference: useRef(null) },
-		{ id: 'box3', x: 350, y: 80, reference: useRef(null) },
-	]);
-	//const [nodes, setNodes] = useState(mockdata);
+	const [parentNode, setparentNode] = useState('id1');
+
+	const [nodes, setNodes] = useState(mockdata);
+
 	const changeNodes = (newNodes) => {
 		setNodes(newNodes);
 	};
 
-	const [connections, setConnections] = useState([
-		arrowObj('parentNode', 'box1'),
-		arrowObj('box1', 'box2'),
-		arrowObj('box2', 'box3'),
-		arrowObj('box3', 'box1'),
-	]);
-	//const [connections, setConnections] = useState(mockconnections);
+	const [connections, setConnections] = useState(mockconnections);
 
 	const changeConnections = (newConnections) => {
 		setConnections(newConnections);
@@ -70,12 +50,16 @@ const View = ({ data }) => {
 
 	const [views, setViews] = useState(mockviewnodes);
 
-	const editView = (newView) => {
+	const changeViews = (newView) => {
 		setViews(newView);
 	};
 
 	const changeState = (newState) => {
 		setActiveState(newState);
+	};
+
+	const changeParentNode = (newParent) => {
+		setparentNode(newParent);
 	};
 
 	return (
@@ -84,7 +68,18 @@ const View = ({ data }) => {
 				changeState={(newState) => changeState(newState)}
 				activeState={activeState}
 			/>
-			{activeState == 1 && <NodeScreen />}
+			{activeState == 1 && (
+				<NodeScreen
+					parentNode={parentNode}
+					nodes={nodes}
+					connections={connections}
+					viewnodes={mockviewnodes}
+					setparentNode={changeParentNode}
+					setNodes={changeNodes}
+					setConnections={changeConnections}
+					setViewNodes={changeViews}
+				/>
+			)}
 			{activeState == 2 && (
 				<GraphScreen
 					parentNode={parentNode}

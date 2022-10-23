@@ -32,21 +32,10 @@ const uid = () => {
 	return Date.now().toString(36) + Math.random().toString(36).substr(2);
 };
 
-const EditablePage = ({ id, fetchedBlocks, err }) => {
+const EditablePage = ({ id, blocks, setBlocks }) => {
 	id = uid();
-	console.log('id: ', id);
-
-	fetchedBlocks = [
-		{
-			_id: '5f54d75b114c6d176d7e9765',
-			html: 'Heading',
-			tag: 'h1',
-			imageUrl: '',
-		},
-	];
 
 	// const router = useRouter();
-	const [blocks, setBlocks] = useState(fetchedBlocks);
 	const [currentBlockId, setCurrentBlockId] = useState(null);
 
 	const prevBlocks = usePrevious(blocks);
@@ -84,16 +73,12 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
 		const updatedBlocks = [...blocks];
 		updatedBlocks[index] = {
 			...updatedBlocks[index],
-			tag: currentBlock.tag,
-			html: currentBlock.html,
-			imageUrl: currentBlock.imageUrl,
+			...currentBlock,
 		};
 		setBlocks(updatedBlocks);
 	};
 
 	const addBlockHandler = (currentBlock) => {
-		console.log(currentBlock);
-		console.log(blocks);
 		setCurrentBlockId(currentBlock.id);
 		const index = blocks.map((b) => b._id).indexOf(currentBlock.id);
 		const updatedBlocks = [...blocks];

@@ -9,10 +9,6 @@ const NodeData = () => {
 		{ id: useId(), html: '', tag: 'p' },
 	]);
 
-	useEffect(() => {
-		console.log(content);
-	}, [content]);
-
 	return (
 		<div
 			style={{
