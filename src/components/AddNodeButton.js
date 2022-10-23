@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
 import colours from '../assets/colours';
+import NodeScreen from '../screens/NodeScreen';
 
-const AddNodeButton = ({ addNode }) => {
+const AddNodeButton = ({ addNode, nodes, parentNode, connections }) => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -20,12 +21,19 @@ const AddNodeButton = ({ addNode }) => {
     },
   });
 
-  const newRef = useRef(null);
   return (
     <div
-      onClick={() =>
-        addNode({ id: 'newNode', x: 350, y: 80, reference: newRef })
-      }
+      onClick={() => {
+        let newId = 'id' + (Object.keys(nodes).length + 1);
+        let newNode = {
+          id: newId,
+          title: '',
+          content: [],
+          connections: {},
+        };
+        nodes[newId] = newNode;
+        addNode({ ...nodes });
+      }}
     >
       <ThemeProvider theme={theme}>
         <Fab color='secondary' aria-label='add'>

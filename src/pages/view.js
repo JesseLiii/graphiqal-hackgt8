@@ -9,115 +9,91 @@ import colours from '../assets/colours';
 import { mockdata, mockconnections, mockviewnodes } from '../helpers/mockdata';
 
 const View = ({ data }) => {
-	console.log('mock');
-	console.log(mockconnections);
-	console.log(mockdata);
-	console.log(mockviewnodes);
+  console.log('mock');
+  console.log(mockconnections);
+  console.log(mockdata);
+  console.log(mockviewnodes);
 
-	const arrowObj = (start, end) => {
-		return {
-			start: start,
-			end: end,
-			labels: {
-				middle: (
-					<div
-						style={{ backgroundColor: colours.p1 }}
-						contentEditable
-						suppressContentEditableWarning={true}
-					>
-						Editable label
-					</div>
-				),
-			},
-			headSize: 0,
-			strokeWidth: 5,
-			//   dashness: { animation: 1 },
-			color: colours.p2,
-		};
-	};
+  const [activeState, setActiveState] = useState(0);
+  const [selectMode, setSelectMode] = useState(true);
+  const [selectedNodes, setSelectedNodes] = useState([]);
+  const parentNode = 'id1';
 
-	const [activeState, setActiveState] = useState(1);
-	const [selectMode, setSelectMode] = useState(true);
-	const [selectedNodes, setSelectedNodes] = useState([]);
-	const parentNode = 'parentNode';
-	const [nodes, setNodes] = useState([
-		{
-			id: 'parentNode',
-			x: 50,
-			y: 20,
-			reference: useRef(null),
-		},
-		{ id: 'box1', x: 50, y: 20, reference: useRef(null) },
-		{ id: 'box2', x: 20, y: 250, reference: useRef(null) },
-		{ id: 'box3', x: 350, y: 80, reference: useRef(null) },
-	]);
-	//const [nodes, setNodes] = useState(mockdata);
-	const changeNodes = (newNodes) => {
-		setNodes(newNodes);
-	};
+  const [nodes, setNodes] = useState(mockdata);
+  const changeNodes = (newNodes) => {
+    setNodes(newNodes);
+  };
 
-	const [connections, setConnections] = useState([
-		arrowObj('parentNode', 'box1'),
-		arrowObj('box1', 'box2'),
-		arrowObj('box2', 'box3'),
-		arrowObj('box3', 'box1'),
-	]);
-	//const [connections, setConnections] = useState(mockconnections);
+  const [connections, setConnections] = useState(mockconnections);
 
-	const changeConnections = (newConnections) => {
-		setConnections(newConnections);
-	};
+  const changeConnections = (newConnections) => {
+    setConnections(newConnections);
+  };
 
-	const [views, setViews] = useState(mockviewnodes);
+  const [views, setViews] = useState(mockviewnodes);
 
-	const editView = (newView) => {
-		setViews(newView);
-	};
+  const changeView = (newView) => {
+    console.log('old' + JSON.stringify(views));
 
-	const changeState = (newState) => {
-		setActiveState(newState);
-	};
+    console.log('new' + JSON.stringify(newView));
+    setViews(newView);
+  };
 
-	return (
-		<div>
-			<TabBar
-				changeState={(newState) => changeState(newState)}
-				activeState={activeState}
-			/>
-			{activeState == 1 && <NodeScreen />}
-			{activeState == 2 && (
-				<GraphScreen
-					parentNode={parentNode}
-					nodes={nodes}
-					connections={connections}
-					selectMode={selectMode}
-					selectedNodes={selectedNodes}
-				/>
-			)}
-			<div
-				style={{
-					position: 'absolute',
-					bottom: '5%',
-					right: '5%',
-					flexDirection: 'row',
-					display: 'flex',
-					width: '10%',
-					justifyContent: 'space-around',
-				}}
-			>
-				<AddNodeButton
-					addNode={(newNode) => {
-						setNodes([...nodes, newNode]);
-					}}
-				/>
-				<AddConnectionButton
-					addConnection={(newConnection) => {
-						setConnections([...connections, newConnection]);
-					}}
-				/>
-			</div>
-		</div>
-	);
+  const changeState = (newState) => {
+    setActiveState(newState);
+  };
+
+  return (
+    <div>
+      <TabBar
+        views={views[parentNode]}
+        changeState={(newState) => changeState(newState)}
+        activeState={activeState}
+      />
+      {activeState == 0 && <NodeScreen />}
+      {activeState == 1 && (
+        <GraphScreen
+          views={views}
+          parentNode={parentNode}
+          nodes={nodes}
+          connections={connections}
+          selectMode={selectMode}
+          selectedNodes={selectedNodes}
+          changeView={(newView) => changeView(newView)}
+          changeConnections={(newConnections) =>
+            changeConnections(newConnections)
+          }
+          changeNodes={(newNodes) => changeNodes(newNodes)}
+        />
+      )}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '5%',
+          right: '5%',
+          flexDirection: 'row',
+          display: 'flex',
+          width: '10%',
+          justifyContent: 'space-around',
+        }}
+      >
+        <AddNodeButton
+          nodes={nodes}
+          addNode={(newNodes) => {
+            changeNodes(newNodes);
+            console.log('new nodes' + JSON.stringify(newNodes));
+          }}
+          parentNode={parentNode}
+          connections={connections}
+        />
+        <AddConnectionButton
+          addConnection={(newConnection) => {
+            setConnections([...connections, newConnection]);
+          }}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default View;
