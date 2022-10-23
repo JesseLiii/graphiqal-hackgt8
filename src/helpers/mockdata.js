@@ -1,7 +1,7 @@
 export const mockdata = {
 	id1: {
 		id: 'id1',
-		title: 'Project Management Application',
+		title: 'PM App',
 		content: [
 			{
 				_id: '6354f158172bc25d9630159f',
