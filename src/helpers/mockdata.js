@@ -1,54 +1,56 @@
 export const mockdata = {
 	id1: {
 		id: 'id1',
-		title: 'Parent Node - PMA',
+		title: 'Project Management Application',
 		content: [
 			{
-				_id: 'l9kqq7kytgj7gqpsf2',
-				html: 'PMA',
-				tag: 'h1',
+				_id: '6354f158172bc25d9630159f',
+				tag: 'p',
+				html: 'The PMA (! PMS !) is an application to facilitate the creative process by aiding with all the steps from resource gathering, to ideating, to brainstorming, to executing.',
 				imageUrl: '',
+				id: '6354f158172bc25d9630159f',
 			},
 			{
-				_id: '6354a92260f8431027f5c05d',
+				_id: '6354a9447dc8fbeeab8c7423',
 				tag: 'h3',
-				html: 'Pain Point 1',
+				html: "Pain Point 1: Can't capture resources efficiently",
+				node_id: '6354a9447dc8fbeeab8c7423',
 				imageUrl: '',
 			},
 			{
 				_id: '6354a93fb9664d50cbb7457c',
 				tag: 'p',
-				html: 'Paragraph about pain point 1',
+				html: 'When looking online, sometimes we find resources that we would like to capture parts of, such as podcasts and videos, but we have no way to comment/distill these resources.',
 				imageUrl: '',
+				id: '6354a93fb9664d50cbb7457c',
 			},
 			{
 				_id: '6354a9447dc8fbeeab8c7422',
 				tag: 'h3',
-				html: 'Pain Point 2',
+				html: "Pain Point 2: Can't save resources in more than one place",
+				node_id: '6354a9447dc8fbeeab8c7422',
 				imageUrl: '',
 			},
 			{
-				_id: '6354a955cf6add6b4e4e54f0',
+				_id: '6354f29903b32db43351ac8f',
 				tag: 'p',
-				html: '',
+				html: 'Existing tools are too linear and hierarchical, when we are brainstorming, things are messier. Different ideas/resources can be connected to different things',
 				imageUrl: '',
-			},
-			{
-				_id: '6354a94c4bf97cf84f6d11b4',
-				tag: 'p',
-				html: 'example data structure',
-				imageUrl: '',
+				id: '6354f29903b32db43351ac8f',
 			},
 			{
 				_id: '6354a923c5994750dcea49aa',
 				tag: 'h3',
-				node_id: 'id2',
+				node_id: '6354f2c61d5b956b9e7cbd16',
+				title: 'Feature 1: Node + Connection View',
 			},
 			{
-				_id: '6354a923c5994750dcea491e',
+				_id: '6354a923c5994750dcea491asd',
 				tag: 'p',
-				html: 'heehee',
+				html: 'This app :)',
 				imageUrl: '',
+				node_parent: 'id2',
+				id: '6354a923c5994750dcea491asd',
 			},
 		],
 		connections: {
@@ -89,6 +91,40 @@ export const mockdata = {
 		id: 'id5',
 		title: 'Feature 2',
 		content: [],
+	},
+	'6354f2c61d5b956b9e7cbd16': {
+		id: '6354f2c61d5b956b9e7cbd16',
+		title: 'Feature 1: Node + Connection View',
+		content: [],
+		connections: {},
+	},
+	'6354a9447dc8fbeeab8c7423': {
+		id: '6354a9447dc8fbeeab8c7423',
+		title: 'Pain Point 1: No way to save resources',
+		content: [
+			{
+				_id: '6354a93fb9664d50cbb7457c',
+				tag: 'p',
+				html: 'When looking online, sometimes we find resources that we would like to capture parts of, such as podcasts and videos, but we have no way to comment/distill these resources.',
+				imageUrl: '',
+				id: '6354a93fb9664d50cbb7457c',
+			},
+		],
+		connections: {},
+	},
+	'6354a9447dc8fbeeab8c7422': {
+		id: '6354a9447dc8fbeeab8c7422',
+		title: "Pain Point 2: Can't save resources in more than one place",
+		content: [
+			{
+				_id: '6354f29903b32db43351ac8f',
+				tag: 'p',
+				html: 'Existing tools are too linear and hierarchical, when we are brainstorming, things are messier. Different ideas/resources can be connected to different things',
+				imageUrl: '',
+				id: '6354f29903b32db43351ac8f',
+			},
+		],
+		connections: {},
 	},
 };
 

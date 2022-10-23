@@ -91,7 +91,10 @@ const View = ({ data }) => {
 			nodes: [node1, node2],
 		};
 		connections[newTitle] = newConnection;
+		nodes[parentNode].connections[node2] = newTitle;
+
 		setConnections({ ...connections });
+		setNodes({ ...nodes });
 		setOpen(false);
 		setChecked({});
 	};
@@ -211,20 +214,24 @@ const View = ({ data }) => {
 					justifyContent: 'space-around',
 				}}
 			>
-				<AddNodeButton
-					nodes={nodes}
-					addNode={(newNodes) => {
-						changeNodes(newNodes);
-					}}
-					parentNode={parentNode}
-					connections={connections}
-				/>
-				<AddConnectionButton
-					addConnection={(newConnection) => {
-						setConnections([...connections, newConnection]);
-					}}
-					onClick={handleOpen}
-				/>
+				{activeState == 1 && (
+					<>
+						<AddNodeButton
+							nodes={nodes}
+							addNode={(newNodes) => {
+								changeNodes(newNodes);
+							}}
+							parentNode={parentNode}
+							connections={connections}
+						/>
+						<AddConnectionButton
+							addConnection={(newConnection) => {
+								setConnections([...connections, newConnection]);
+							}}
+							onClick={handleOpen}
+						/>
+					</>
+				)}
 			</div>
 		</div>
 	);

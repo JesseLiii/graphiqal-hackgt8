@@ -26,6 +26,8 @@ const GraphScreen = ({
 	};
 
 	const editConnection = (connection, newTitle) => {
+		console.log('connection curr');
+		console.log(JSON.stringify(connection));
 		connections[connection.id].title = newTitle;
 		changeConnections({ ...connections });
 	};

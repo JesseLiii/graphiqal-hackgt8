@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import colours from '../../assets/colours';
 import { objectId } from '../../utils';
+import Card from '@mui/material/Card';
 
 const ConnectionCard = ({
 	connection,
@@ -30,12 +31,12 @@ const ConnectionCard = ({
 	const colour = added ? '#7fdb74' : colours.lining;
 
 	return (
-		<div
+		<Card
 			className='card'
 			style={{
 				marginTop: '5px',
 				marginBottom: '5px',
-				padding: '5px',
+				padding: '8px',
 				display: 'flex',
 				flexDirection: 'column',
 				borderColor: colour,
@@ -62,7 +63,7 @@ const ConnectionCard = ({
 		>
 			<div>{nodeTitle}</div>
 			<div>{content}</div>
-		</div>
+		</Card>
 	);
 };
 

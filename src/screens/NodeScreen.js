@@ -3,6 +3,7 @@ import colours from '../assets/colours';
 
 import ConnectionCard from './NodeScreenComponents/ConnectionCard';
 import ConnectionModal from './NodeScreenComponents/ConnectionModal';
+import Card from '@mui/material/Card';
 
 import NodeConnections from './NodeScreenComponents/NodeConnections';
 import NodeData from './NodeScreenComponents/NodeData';
@@ -26,6 +27,10 @@ const NodeScreen = ({
 		let node = blocks[i];
 		let nodeData = nodes[node.node_id];
 
+		console.log(i, nodeData);
+		console.log(blocks[i]);
+		console.log(blocks);
+
 		nodeData = [
 			{ ...node, html: nodeData.title, imageUrl: '' },
 			...nodeData.content.map((e) => {
@@ -42,17 +47,26 @@ const NodeScreen = ({
 	const refactorNodes = () => {
 		let content = nodes[parentNode].content;
 		let newBlocks;
+
 		for (const i in content) {
 			if ('node_id' in content[i]) newBlocks = nodeToContent(i, content);
 		}
+
+		newBlocks.unshift({
+			_id: 'l9kqq7kytgj7gqpsf2',
+			html: nodes[parentNode].title,
+			tag: 'h1',
+			imageUrl: '',
+		});
 		return newBlocks;
 	};
 
 	const [blocks, setBlocks] = useState(refactorNodes());
 
-	// useEffect(() => {
-	// 	setBlocks(refactorNodes());
-	// }, [nodes]);
+	useEffect(() => {
+		console.log('blocks');
+		console.log(blocks);
+	}, [blocks]);
 
 	useEffect(() => {
 		let bool = false;
@@ -85,6 +99,7 @@ const NodeScreen = ({
 							content: ['default content'],
 							type: 'parent',
 							nodes: [parentNode, x.node_id],
+							id: 'connection ' + parentNode + ' ' + x.node_id,
 						};
 				} else if (x.html !== nodes[x.node_id].title) {
 					bool = true;
@@ -111,6 +126,7 @@ const NodeScreen = ({
 							content: ['default content'],
 							type: 'parent',
 							nodes: [parentNode, x.node_id],
+							id: 'connection ' + parentNode + ' ' + x.node_id,
 						};
 				}
 			}
@@ -164,17 +180,16 @@ const NodeScreen = ({
 					borderColor: colours.lining,
 				}}
 			>
-				<h1>NodeData</h1>
 				<EditablePage
 					blocks={blocks}
 					setBlocks={changeBlocks}
 				></EditablePage>
 			</div>
 			<div style={{ flex: 2, padding: '10px' }}>
-				<h1>NodeConnections</h1>
+				<h1>Connections</h1>
 				{renderConnections()}
 			</div>
-			<ConnectionModal />
+			{/* <ConnectionModal /> */}
 		</div>
 	);
 };

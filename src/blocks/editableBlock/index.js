@@ -350,6 +350,7 @@ class EditableBlock extends React.Component {
 				)}
 				<Draggable
 					draggableId={this.props.id}
+					key={this.props.id}
 					index={this.props.position}
 				>
 					{(provided, snapshot) => (
