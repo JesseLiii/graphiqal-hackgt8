@@ -1,5 +1,6 @@
 export const mockdata = {
 	id1: {
+		id: 'id1',
 		title: 'Parent Node - PMA',
 		content: [
 			{
@@ -56,6 +57,7 @@ export const mockdata = {
 		},
 	},
 	id2: {
+		id: 'id2',
 		title: 'Pain Point 1',
 		content: [
 			{
@@ -71,6 +73,7 @@ export const mockdata = {
 		},
 	},
 	id3: {
+		id: 'id3',
 		title: 'Piano Point 2',
 		content: [],
 		connections: {
@@ -78,10 +81,12 @@ export const mockdata = {
 		},
 	},
 	id4: {
+		id: 'id4',
 		title: 'Feature 1',
 		content: [],
 	},
 	id5: {
+		id: 'id5',
 		title: 'Feature 2',
 		content: [],
 	},
@@ -89,30 +94,35 @@ export const mockdata = {
 
 export const mockconnections = {
 	'connection1-2': {
+		id: 'connection1-2',
 		title: '',
 		content: [],
 		type: 'parent',
 		nodes: ['id1', 'id2'],
 	},
 	'connection1-3': {
+		id: 'connection1-3',
 		title: 'Parent Node',
 		content: [],
 		type: 'parent',
 		nodes: ['id1', 'id3'],
 	},
 	'connection2-4': {
+		id: 'connection2-4',
 		title: 'Parent Node',
 		content: [],
 		type: 'parent',
 		nodes: ['id2', 'id4'],
 	},
 	'connection2-5': {
+		id: 'connection2-5',
 		title: 'Parent Node',
 		content: [],
 		type: 'parent',
 		nodes: ['id2', 'id5'],
 	},
 	'connection3-5': {
+		id: 'connection3-5',
 		title: 'Parent Node',
 		content: [],
 		type: 'parent',
@@ -123,21 +133,23 @@ export const mockconnections = {
 export const mockviewnodes = {
 	id1: [
 		{
-			title: 'Graph PMA',
-			content: {
-				id: {
-					pos: {
-						x: '900',
-						y: '900',
-					},
-				},
-			},
-			type: 'graph',
-		},
-		{
+			id: 'id22',
 			title: 'Detail PMA',
 			content: [],
 			type: 'detail',
+		},
+		{
+			id: 'id11',
+			title: 'Graph PMA',
+			content: {
+				// id2: {
+				//   pos: {
+				//     x: '100',
+				//     y: '100',
+				//   },
+				// },
+			},
+			type: 'graph',
 		},
 	],
 };
