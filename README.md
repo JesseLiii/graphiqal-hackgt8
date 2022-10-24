@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+Inspiration
+We are both creative people, going on tangents whenever we sit to brainstorm, yet trying to document brainstorming and planning sessions for creative processes on existing note-taking applications forces us to lose a lot of our thoughts and insights. You are forced to place things in a linear or hierarchical fashion, and you lose the flexibility of drawing things on paper to show various connections, multiple uses of a singular idea, and more.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+What it does
+Our application organizes all elements into nodes and connections between nodes. With this organizational fashion, you are able to add nodes to your network through a graphical or text-editor interface, and have changes seamlessly transfer between the two. In this way, a singular node is an independent entity, not tied to any hierarchy unless the user chooses to do so: it can be connected to many other nodes, can be reused, and can contain detailed data under it as well. The connections themselves are objects that contain details about the connection between two nodes.
 
-## Available Scripts
+How we built it
+We built this application using Electron.js, an add-on to ReactJS for desktop applications. The coding was in JavaScript/React.
 
-In the project directory, you can run:
+Challenges we ran into
+The idea is very much in the abstract, revolutionizing the way we tangibly represent and manipulate thoughts in our head and the creative process itself. For this reason, we ran into a lot of interesting yet confusing discussions about how we want to organize the different layers, how we represent and work with information, and practical use cases where the application will actually prove useful. We needed to pick an aspect of it to start with that would be modular and useful on its own which we are also capable of achieving in such a short time period.
 
-### `npm start`
+Accomplishments that we're proud of
+We are proud of the concrete implementation we were able to make of such an abstract space. The tool we built is also usable on its own, (we used it to map out itself as we wrote this description!) In addition, the UI is simple to use and not very crowded, so it would be intuitive to a user to get value from it even in this preliminary form.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+What we learned
+We learned about the difficulty of picking one focus point that encapsulates the idea of the whole project, is modular and fully functional on its own, and can be accomplished in this time crunch. The ability to distill and eliminate peripheral features/parts is very valuable when it comes to developing useful software.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+What's next for GraphIQal
+We believe that creativity is a muscle you can make stronger. We selected this project for the Hackathon with a larger picture in mind: a tool that would help people become more creative through linking them with resources, facilitating the brainstorming/ideating process, and helping with the execution. In terms of this specific feature, here are some of the things we have in mind:
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Being able to select nodes and expand to a detailed view of that node as well as its connections
+Being able to create custom views that show different sets of nodes and arrange them in different visual forms
